@@ -1,0 +1,31 @@
+     1                                 %line 1+1 memory1.asm
+     2                                 
+     3                                 
+     4                                 
+     5                                 
+     6                                 
+     7                                 
+     8                                 
+     9                                 [segment .data]
+    10 00000000 0000000000000000<rept>        a times 10 dq 0
+    11 00000050 FFFF0300F9FF080009-     b dw -1, 3, -7, 8, 9
+    12 00000050 00                 
+    13 0000005A 737472696E67207465-     c db "string terminated by zero", 0
+    14 0000005A 726D696E6174656420-
+    15 0000005A 6279207A65726F00   
+    16                                 
+    17                                 [segment .bss]
+    18 00000000 <gap>                   d resq 10
+    19 00000050 <gap>                   e resw 5
+    20 0000005A <gap>                   f resb 100
+    21                                 
+    22                                 [segment .text]
+    23                                 [global main]
+    24                                  main:
+    25 00000000 55                      push rbp
+    26 00000001 4889E5                  mov rbp, rsp
+    27 00000004 4883EC10                sub rsp, 16
+    28                                 
+    29 00000008 31C0                    xor eax, eax
+    30 0000000A C9                      leave
+    31 0000000B C3                      ret

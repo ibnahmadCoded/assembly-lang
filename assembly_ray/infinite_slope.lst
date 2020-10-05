@@ -1,0 +1,31 @@
+     1                                 %line 1+1 infinite_slope.asm
+     2                                 
+     3                                 
+     4                                 
+     5                                 
+     6                                 
+     7                                 
+     8                                 
+     9                                 
+    10                                 
+    11                                 
+    12                                 [segment .data]
+    13 00000000 0700000000000000        xa dq 7
+    14 00000008 0700000000000000        xb dq 7
+    15 00000010 0500000000000000        ya dq 5
+    16 00000018 0300000000000000        yb dq 3
+    17                                 
+    18                                 [segment .text]
+    19                                 [global main]
+    20                                  main:
+    21 00000000 55                      push rbp
+    22 00000001 4889E5                  mov rbp, rsp
+    23 00000004 4883EC10                sub rsp, 16
+    24 00000008 488B0425[00000000]      mov rax, [xa]
+    25 00000010 482B0425[00000000]      sub rax, [xb]
+    26 00000018 48C7C301000000          mov rbx, 1
+    27 0000001F 480F44C3                cmovz rax, rbx
+    28 00000023 48C7C100000000          mov rcx, 0
+    29 0000002A 480F45C1                cmovnz rax, rcx
+    30 0000002E C9                      leave
+    31 0000002F C3                      ret

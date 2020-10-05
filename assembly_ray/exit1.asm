@@ -1,0 +1,16 @@
+; Program: exit
+;
+; Executes the exit system call
+;
+; No input
+;
+; Output: only the exit status ($? in shell)
+;
+  segment .text
+  global main 
+
+main:
+  mov eax,1    ; 1 is the exit syscall number
+  mov ebx,0    ; the status value to return
+  int 0x80     ; execute a system call
+stop
